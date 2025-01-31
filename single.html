@@ -55,7 +55,7 @@
         let height = getParameterByName("height") ?? undefined
         height = height ? parseInt(height) : height
         let main_div = document.getElementById("main")
-        zip(fumens,fumencanvas_single(fumens)).map((fumen_img) => {
+        zip(fumens,fumencanvas_single(fumens,cellsize,height)).map((fumen_img) => {
             let fumen = fumen_img[0]
             let img = fumen_img[1]
             let single_div = document.createElement("div")
