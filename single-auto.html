@@ -84,6 +84,15 @@
             main_div.appendChild(single_div)
         })
 
+        function sendSizeUpdate() {
+            const w = document.body.scrollWidth;
+            const h = document.body.scrollHeight;
+            const f = fumens
+            window.parent.postMessage({ w, h, f }, "*"); // Sends message to parent
+        }
+
+        window.onload = sendSizeUpdate
+
     </script>
 
 

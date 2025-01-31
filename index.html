@@ -36,7 +36,7 @@
         let s_in = document.getElementById("s_in")
         let s_out = document.getElementById("s_out")
         s_in.oninput = () => {
-            s_out.innerText = `<iframe src="https://muqhc.github.io/fumen-html/single-auto.html?cellsize=22&height=&fumen=${s_in.value}" onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));' style="height:200px;width:100%;border:none;overflow:hidden;"></iframe>`
+            s_out.innerText = `<iframe src="https://muqhc.github.io/fumen-html/single-auto.html?cellsize=22&height=&fumen=${s_in.value}" onload='(function(o){window.addEventListener("message",(event)=>{const {w,h,f}=event.data,if(!((f===${s_in.value})&&(event.origin==="https://muqhc.github.io"))){return ;};o.width=w;o.height=h;});}(this));' style="border:none;overflow:hidden;"></iframe>`
         }
     </script>
 
