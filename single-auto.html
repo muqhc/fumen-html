@@ -87,7 +87,7 @@
         function sendSizeUpdate() {
             const w = document.body.scrollWidth;
             const h = document.body.scrollHeight;
-            const f = fumens
+            const f = getParameterByName("fumen")
             window.parent.postMessage({ w, h, f }, "*"); // Sends message to parent
         }
 
