@@ -61,7 +61,7 @@
             let single_div = document.createElement("div")
             single_div.classList.add("fumen")
             single_div.appendChild(img)
-            single_div.onmouseover = () => {
+            single_div.onmouseenter = () => {
                 let button = document.createElement("div")
                 button.classList.add("clipboard_button")
                 button.innerText = "📋"
@@ -72,7 +72,7 @@
                 }
                 single_div.appendChild(button)
             }
-            single_div.onmouseout = () => {
+            single_div.onmouseleave = () => {
                 single_div.removeChild(...single_div.getElementsByClassName("clipboard_button"))
             }
             main_div.appendChild(single_div)
