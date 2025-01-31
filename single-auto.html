@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="source: https://github.com/muqhc/fumen-html">
+    <title>My Fumen Html</title>
+    <style>
+        #main img{ float: left; }
+        div.fumen {
+            position: relative;
+            display: inline-block;
+        }
+        html, body {
+            width: max-content;
+            height: max-content;
+            overflow: hidden; /* Prevent scrollbars */
+        }
+
+        .clipboard_button {
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+            text-align: center;
+            line-height: 20px;
+            cursor: pointer;
+            color: #2ee700;
+        }
+        .clipboard_button_act {
+            width: 80px;
+            background-color: #333;
+        }
+    </style>
+</head>
+<body>
+    <script type="text/javascript" src="./tetris-fumen.js"></script>
+	<script type="text/javascript" src="./modified-glueFumen.js"></script>
+	<script type="text/javascript" src="./modified-unglueFumen.js"></script>
+	<script type="text/javascript" src="./modified-mirrorFumen.js"></script>
+	<script type="text/javascript" src="./modified-combineFumen.js"></script>
+	<script type="text/javascript" src="./modified-splitFumen.js"></script>
+    <script type="text/javascript" src="./modified-removeComments.js"></script>
+    <script type="text/javascript" src="./modified-lockFumen.js"></script>
+    <script type="text/javascript" src="./modified-grayoutAll.js"></script>
+	<script type="text/javascript" src="./modified-grayoutLast.js"></script>
+	<script type="text/javascript" src="LZWEncoder.js"></script>
+	<script type="text/javascript" src="NeuQuant.js"></script>
+	<script type="text/javascript" src="GIFEncoder.js"></script>
+	<script type="text/javascript" src="b64.js"></script>
+	<script type="text/javascript" src="utils.js"></script>
+	<script type="text/javascript" src="./modified-modified-fumen-canvas.js"></script>
+    <script type="text/javascript" src="./modified-modified-fumen-render.js"></script>
+
+    <div id="main"></div>
+
+    <script type="text/javascript">
+        let fumens = getParameterByName("fumen").split(",")
+        let cellsize = parseInt(getParameterByName("cellsize") ?? "22")
+        let height = getParameterByName("height") ?? undefined
+        height = height ? parseInt(height) : height
+        let main_div = document.getElementById("main")
+        zip(fumens,fumencanvas_single(fumens)).map((fumen_img) => {
+            let fumen = fumen_img[0]
+            let img = fumen_img[1]
+            let single_div = document.createElement("div")
+            single_div.classList.add("fumen")
+            single_div.appendChild(img)
+            single_div.onmouseenter = () => {
+                let button = document.createElement("div")
+                button.classList.add("clipboard_button")
+                button.innerText = "📋"
+                button.onclick = () => {
+                    button.classList.add("clipboard_button_act")
+                    button.innerText = "Copied!"
+                    navigator.clipboard.writeText(fumen);
+                }
+                single_div.appendChild(button)
+            }
+            single_div.onmouseleave = () => {
+                single_div.removeChild(...single_div.getElementsByClassName("clipboard_button"))
+            }
+            main_div.appendChild(single_div)
+        })
+
+    </script>
+
+
+</body>
+</html>
