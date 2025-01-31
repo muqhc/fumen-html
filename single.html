@@ -53,7 +53,7 @@
         let fumens = getParameterByName("fumen").split(",")
         let cellsize = parseInt(getParameterByName("cellsize") ?? "22")
         let height = getParameterByName("height") ?? undefined
-        height = height ? parseInt(height) : height
+        height = height ? parseInt(height) : undefined
         let main_div = document.getElementById("main")
         zip(fumens,fumencanvas_single(fumens,cellsize,height)).map((fumen_img) => {
             let fumen = fumen_img[0]
