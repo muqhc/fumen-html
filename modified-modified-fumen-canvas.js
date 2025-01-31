@@ -210,7 +210,7 @@ function fumencanvas() {
 	}
 }
 
-function fumencanvas_single(input,cellSize=12) {
+function fumencanvas_single(input,cellSize=12, height = undefined) {
 
 	var fumenCodes = input;
 	results = [];
