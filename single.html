@@ -65,14 +65,14 @@
                 button.classList.add("clipboard_button")
                 button.innerText = "📋"
                 button.onclick = () => {
-                    button.innerText = "Copied!"
                     button.classList.add("clipboard_button_act")
+                    button.innerText = "Copied!"
                     navigator.clipboard.writeText(fumen);
                 }
                 single_div.appendChild(button)
             }
             single_div.onmouseout = () => {
-                single_div.removeChild(single_div.getElementsByClassName("clipboard_button"))
+                single_div.removeChild(...single_div.getElementsByClassName("clipboard_button"))
             }
             main_div.appendChild(single_div)
         })
