@@ -25,10 +25,19 @@
 	<script type="text/javascript" src="./modified-modified-fumen-canvas.js"></script>
     <script type="text/javascript" src="./modified-modified-fumen-render.js"></script>
 
-    <a href="https://muqhc.github.io/fumen-html/single.html">single.html</a>
+    <div style="float: left;">
+        <a href="https://muqhc.github.io/fumen-html/single.html">single.html</a>
+        <a href="https://muqhc.github.io/fumen-html/single-auto.html">single-auto.html</a>
+        <input id="s_in" type="text">
+        <textarea id="s_out" readonly="true"></textarea>
+    </div>
 
     <script>
-        
+        let s_in = document.getElementById("s_in")
+        let s_out = document.getElementById("s_out")
+        s_in.oninput = () => {
+            s_out.innerText = `<iframe src="https://muqhc.github.io/fumen-html/single-auto.html?cellsize=22&height=&fumen=${s_in.value}" onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));' style="height:200px;width:100%;border:none;overflow:hidden;"></iframe>`
+        }
     </script>
 
 
